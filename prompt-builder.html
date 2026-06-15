@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnova - Analytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-chart-line logo-icon"></i>
+                    <span>Adnova</span>
+                </div>
+            </div>
+            
+            <div class="workspace-selector">
+                <div class="workspace-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="workspace-info">
+                    <span class="workspace-label">Workspace</span>
+                    <span class="workspace-name">Sales-Jambi-Q1</span>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="sheet-logam-mulia.html" class="nav-item">
+                    <i class="fa-solid fa-coins"></i>
+                    <span>Logam Mulia</span>
+                </a>
+                <a href="top-items.html" class="nav-item">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Top Items</span>
+                </a>
+                <a href="ngvo.html" class="nav-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <span>NGVO</span>
+                </a>
+                <a href="dsms.html" class="nav-item">
+                    <i class="fa-solid fa-database"></i>
+                    <span>DSMS</span>
+                </a>
+                <a href="rwo.html" class="nav-item">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>RWO</span>
+                </a>
+                <a href="user-quality.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>User Quality</span>
+                </a>
+                <a href="optimization.html" class="nav-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Optimization</span>
+                </a>
+                <a href="reports-analytics.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Reports & Analytics</span>
+                </a>
+                <a href="ai-advisor.html" class="nav-item">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Advisor</span>
+                </a>
+                <a href="prompt-builder.html" class="nav-item active">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <span>Prompt Builder</span>
+                </a>
+                <a href="prompt-library.html" class="nav-item">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Prompt Library</span>
+                </a>
+                <a href="integrations.html" class="nav-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <span>Integrations</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="User Profile">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-email">admin@adnova.com</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-breadcrumb">
+                    <i class="fa-solid fa-chevron-right text-muted"></i>
+                    <h1>Sales Performance Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fa-solid fa-plus"></i></button>
+                    <button class="icon-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                </div>
+            </header>
+
+            <div class="dashboard-content"><h2 style="color:var(--text-main)">Prompt Builder</h2><p style="color:var(--text-muted); margin-top:10px">Halaman ini sedang dalam tahap pengembangan.</p></div>
+        </main>
+    </div>
+
+    
+        <p>Fetching Live Data...</p>
+    </div>
+
+    
+
+    <script src="theme.js"></script>
+</body>
+</html>
+
+
+
+
+

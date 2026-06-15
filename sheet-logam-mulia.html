@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnova - Detail Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js & PapaParse -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- jQuery & DataTables -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Custom Styles for Dark Mode DataTables -->
+    <style>
+        .dataTables_wrapper {
+            color: var(--text-main);
+            padding: 20px 0;
+        }
+        table.dataTable {
+            border-collapse: collapse;
+        }
+        table.dataTable tbody tr {
+            background-color: transparent !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        table.dataTable tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+        table.dataTable thead th {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .dataTables_info, .dataTables_length, .dataTables_filter {
+            color: var(--text-muted) !important;
+            margin-bottom: 15px;
+        }
+        .dataTables_filter input, .dataTables_length select {
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+        .paginate_button {
+            color: var(--text-main) !important;
+        }
+        .paginate_button.current {
+            background: var(--accent-purple) !important;
+            border: none !important;
+            color: white !important;
+        }
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .detail-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar will be injected via JS or we can keep it hardcoded. Since we generate files, we hardcode it for now. -->
+        <!-- Since we only need the right side to change, I'll put a placeholder for the sidebar here and we will inject it using PS or just copy it. -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fa-solid fa-chart-line logo-icon"></i>
+                    <span>Adnova</span>
+                </div>
+            </div>
+            
+            <div class="workspace-selector">
+                <div class="workspace-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="workspace-info">
+                    <span class="workspace-label">Workspace</span>
+                    <span class="workspace-name">Sales-Jambi-Q1</span>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="sheet-logam-mulia.html" class="nav-item active">
+                    <i class="fa-solid fa-coins"></i>
+                    <span>Logam Mulia</span>
+                </a>
+                <a href="top-items.html" class="nav-item">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Top Items</span>
+                </a>
+                <a href="ngvo.html" class="nav-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <span>NGVO</span>
+                </a>
+                <a href="dsms.html" class="nav-item">
+                    <i class="fa-solid fa-database"></i>
+                    <span>DSMS</span>
+                </a>
+                <a href="rwo.html" class="nav-item">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>RWO</span>
+                </a>
+                <a href="user-quality.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span>User Quality</span>
+                </a>
+                <a href="optimization.html" class="nav-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Optimization</span>
+                </a>
+                <a href="reports-analytics.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Reports & Analytics</span>
+                </a>
+                <a href="ai-advisor.html" class="nav-item">
+                    <i class="fa-solid fa-robot"></i>
+                    <span>AI Advisor</span>
+                </a>
+                <a href="prompt-builder.html" class="nav-item">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <span>Prompt Builder</span>
+                </a>
+                <a href="prompt-library.html" class="nav-item">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Prompt Library</span>
+                </a>
+                <a href="integrations.html" class="nav-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <span>Integrations</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="User Profile">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-email">admin@adnova.com</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-breadcrumb">
+                    <i class="fa-solid fa-chevron-right text-muted"></i>
+                    <h1>Detail Report: Logam Mulia</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                    <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Top Summary Cards -->
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 24px;">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Total Target</span>
+                            <div class="stat-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        </div>
+                        <div class="stat-value" id="detail-target">--</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Total Realisasi</span>
+                            <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        </div>
+                        <div class="stat-value" id="detail-realisasi">--</div>
+                        <div class="stat-trend positive">
+                            <span id="detail-pct">--</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Total Reward Dicapai</span>
+                            <div class="stat-icon"><i class="fa-solid fa-gift"></i></div>
+                        </div>
+                        <div class="stat-value" id="detail-reward">--</div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-container" style="display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <label for="paketanFilter" style="color: var(--text-muted); font-weight: 600;">Filter Paketan:</label>
+                        <select id="paketanFilter">
+                            <option value="ALL">Semua Paketan</option>
+                            <!-- Options injected by JS -->
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <label for="trackFilter" style="color: var(--text-muted); font-weight: 600;">Status Track:</label>
+                        <select id="trackFilter">
+                            <option value="ALL">Semua Status</option>
+                            <option value="BLN1">On Track Bulan 1</option>
+                            <option value="BLN2">On Track Bulan 2</option>
+                            <option value="BLN3">On Track Bulan 3</option>
+                            <option value="FINAL">On Track Final</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Chart Area: By Depo -->
+                <div class="charts-grid-top" style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px;">
+                    <div class="chart-card glass-panel">
+                        <div class="card-header">
+                            <h2>Pencapaian Berdasarkan Depo (Branch)</h2>
+                        </div>
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="depoChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card glass-panel ai-insights">
+                        <div class="card-header">
+                            <h2>AI Insights</h2>
+                        </div>
+                        <div class="insights-container" style="margin-top: 16px;">
+                            <div class="insight-box alert-box" style="padding: 12px; background: rgba(112, 71, 235, 0.1); border-left: 3px solid var(--accent-purple); margin-bottom: 12px;">
+                                <h3 style="font-size: 14px; margin-bottom: 4px; color: var(--accent-purple);">Analisa Depo Teratas</h3>
+                                <p id="ai-insight-logam" style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Memuat data analisa...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- DataTables Area -->
+                <div class="chart-card glass-panel">
+                    <div class="card-header">
+                        <h2>Data Detail Pelanggan Logam Mulia</h2>
+                    </div>
+                    <div style="width: 100%;">
+                        <table id="dataTable" class="display nowrap" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>REGION</th>
+                                    <th>EntityName</th>
+                                    <th>BranchName</th>
+                                    <th>CustomerId</th>
+                                    <th>CustomerName</th>
+                                    <th>Address</th>
+                                    <th>PhoneNumber</th>
+                                    <th>Lalg</th>
+                                    <th>Target1Bulan</th>
+                                    <th>Target2Bulan</th>
+                                    <th>Target3Bulan</th>
+                                    <th>Real Bulan 1</th>
+                                    <th>% Tgt 1</th>
+                                    <th>Ket Bln 1</th>
+                                    <th>Real Bulan 2</th>
+                                    <th>% Tgt 2</th>
+                                    <th>Ket Bln 2</th>
+                                    <th>Real Bulan 3</th>
+                                    <th>% Tgt 3</th>
+                                    <th>Ket Bln 3</th>
+                                    <th>Real 1+2</th>
+                                    <th>% Tgt 1+2</th>
+                                    <th>KET 1+2</th>
+                                    <th>Real 1+2+3</th>
+                                    <th>% Tgt 1+2+3</th>
+                                    <th>KET FINAL</th>
+                                    <th>Paketan</th>
+                                    <th>Est Pencapaian</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Fetching Live Data...</p>
+    </div>
+
+    <script src="logam-script.js"></script>
+
+    <script src="theme.js"></script>
+</body>
+</html>
+
+
+
+
